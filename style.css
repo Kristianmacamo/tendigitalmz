@@ -1004,6 +1004,146 @@ section { padding: 72px 24px; }
   .chat-widget { right: 16px; width: calc(100vw - 32px); bottom: 84px; }
 }
  
+/* ─── CONTAINER ─── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ─── BUTTONS ─── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  font-family: 'DM Sans', sans-serif;
+}
+.btn-primary {
+  background: var(--blue);
+  color: var(--white);
+}
+.btn-primary:hover {
+  background: var(--blue-mid);
+  transform: translateY(-2px);
+}
+
+/* ─── HERO SECTION ─── */
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  color: var(--white);
+  padding: 100px 24px 80px;
+  text-align: center;
+}
+.hero-content h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -1px;
+}
+.hero-content p {
+  font-size: 18px;
+  color: var(--grey-light);
+  margin-bottom: 32px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ─── LOGO SECTION ─── */
+.logo-section {
+  padding: 80px 24px;
+  background: var(--off-white);
+  text-align: center;
+}
+.logo-section h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 40px;
+}
+.logo-container {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 60px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(10, 22, 40, 0.08);
+}
+.partner-logo {
+  max-width: 200px;
+  max-height: 150px;
+  object-fit: contain;
+}
+.logo-description {
+  font-size: 16px;
+  color: var(--text-muted);
+}
+
+/* ─── FEATURES SECTION ─── */
+.features {
+  padding: 80px 24px;
+  background: var(--white);
+}
+.features h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 48px;
+  text-align: center;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.feature-card {
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: all 0.3s;
+}
+.feature-card:hover {
+  border-color: var(--blue);
+  box-shadow: 0 8px 24px rgba(21, 96, 189, 0.15);
+  transform: translateY(-4px);
+}
+.feature-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+.feature-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+.feature-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ─── NAV LOGO ─── */
+.nav-logo {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--white);
+}
+
  /* ─── FOOTER ─── */
 
 /* ─── FOOTER ─── */
@@ -1052,6 +1192,7 @@ footer ul li a:hover { color: var(--white); }
   .hero-inner        { grid-template-columns: 1fr; }
   .hero-visual       { display: none; }
   .hero h1           { font-size: 32px; }
+  .hero-content h1   { font-size: 36px; }
   .cat-grid          { grid-template-columns: 1fr 1fr; }
   .prod-grid         { grid-template-columns: 1fr 1fr; }
   .stream-grid       { grid-template-columns: 1fr 1fr; }
@@ -1060,6 +1201,7 @@ footer ul li a:hover { color: var(--white); }
   .pay-grid          { grid-template-columns: 1fr 1fr; }
   .ff-inner          { grid-template-columns: 1fr; }
   .footer-grid       { grid-template-columns: 1fr 1fr; }
+  .features-grid     { grid-template-columns: 1fr 1fr; }
   .intl-banner       { flex-direction: column; }
   .nav-links         { display: none; }
 }
@@ -1072,5 +1214,7 @@ footer ul li a:hover { color: var(--white); }
   .pay-grid          { grid-template-columns: 1fr; }
   .footer-grid       { grid-template-columns: 1fr; }
   .ff-plans          { grid-template-columns: 1fr; }
+  .features-grid     { grid-template-columns: 1fr; }
   .intl-mini-grid    { grid-template-columns: 1fr; }
+  .hero-content h1   { font-size: 28px; }
 }
