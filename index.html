@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ten Digital MZ — Produtos Digitais em Mocambique</title>
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- CSS proprio -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Stripe JS (carregado cedo para PCI compliance) -->
+  <script src="https://js.stripe.com/v3/" defer></script>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAVEGACAO
+══════════════════════════════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">Ten<span>Digital</span> MZ</a>
+    <ul class="nav-links">
+      <li><a href="#produtos">Produtos</a></li>
+      <li><a href="#freefire">Free Fire</a></li>
+      <li><a href="#streaming">Streaming</a></li>
+      <li><a href="#giftcards">Gift Cards</a></li>
+      <li><a href="#internacional">Internacional</a></li>
+      <li><a href="#como">Como Funciona</a></li>
+      <li><a href="#produtos" class="nav-cta">Comprar Agora</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">Entrega imediata — 100% digital</div>
+      <h1>Produtos Digitais<br><em>em Mocambique</em></h1>
+      <p>Gift cards internacionais, recarga Free Fire, streaming e muito mais. Pague em MT, receba na hora.</p>
+      <div class="hero-btns">
+        <a href="#produtos" class="btn-primary">Ver Produtos</a>
+        <a href="#como" class="btn-outline">Como Funciona</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><span>500+</span><p>Produtos</p></div>
+        <div class="hero-stat"><span>30+</span><p>Regioes</p></div>
+        <div class="hero-stat"><span>24/7</span><p>Disponivel</p></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card large">
+        <div class="tag">Free Fire — Recarga</div>
+        <div class="name">310 Diamantes Free Fire</div>
+        <div class="price">250 MT <small>/ entrega imediata</small></div>
+      </div>
+      <div class="hero-card">
+        <div class="tag">Gift Card</div>
+        <div class="name">PlayStation BR R$100</div>
+        <div class="price">1.499 MT</div>
+      </div>
+      <div class="hero-card">
+        <div class="tag">Streaming</div>
+        <div class="name">Spotify Premium</div>
+        <div class="price">450 MT <small>/ mes</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     CATEGORIAS
+══════════════════════════════════════════════ -->
+<section class="cats" id="categorias">
+  <div class="container">
+    <div class="section-label">O que vendemos</div>
+    <div class="section-title">Categorias</div>
+    <p class="section-sub">Tudo que precisa em formato digital, entregue em segundos.</p>
+    <div class="cat-grid">
+      <a class="cat-card" href="#freefire">
+        <div class="cat-icon">FF</div>
+        <h3>Free Fire Diamantes</h3>
+        <p>Recargas via codigo de resgate no site oficial da Garena</p>
+      </a>
+      <a class="cat-card" href="#giftcards">
+        <div class="cat-icon">GC</div>
+        <h3>Gift Cards</h3>
+        <p>Gift cards para todas as regioes: USA, BR, PT, ZA e mais</p>
+      </a>
+      <a class="cat-card" href="#streaming">
+        <div class="cat-icon">TV</div>
+        <h3>Streaming</h3>
+        <p>Netflix, Spotify, Disney+, YouTube Premium e outros</p>
+      </a>
+      <a class="cat-card" href="#internacional">
+        <div class="cat-icon">IN</div>
+        <h3>Internacional</h3>
+        <p>Saldo e contas internacionais — PayPal, Skrill, Amazon</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     CATALOGO DE PRODUTOS
+══════════════════════════════════════════════ -->
+<section id="produtos">
+  <div class="container">
+    <div class="section-label">Catalogo</div>
+    <div class="section-title">Produtos em Destaque</div>
+    <p class="section-sub">Preco em Meticais (MT). Entrega automatica por email ou codigo de resgate.</p>
+
+    <div class="prod-tabs">
+      <button class="tab-btn active" onclick="filterProd('all', this)">Todos</button>
+      <button class="tab-btn" onclick="filterProd('ff',  this)">Free Fire</button>
+      <button class="tab-btn" onclick="filterProd('gc',  this)">Gift Cards</button>
+      <button class="tab-btn" onclick="filterProd('st',  this)">Streaming</button>
+      <button class="tab-btn" onclick="filterProd('ga',  this)">Jogos</button>
+      <button class="tab-btn" onclick="filterProd('in',  this)">Internacional</button>
+    </div>
+
+    <div class="prod-grid" id="prod-grid">
+
+      <!-- FREE FIRE -->
+      <div class="prod-card" data-cat="ff">
+        <div class="prod-img prod-img-ff">
+          <div class="label">100<br>Diamantes</div>
+          <div class="prod-badge">Free Fire</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-tag">Free Fire</div>
+          <div class="prod-name">100 Diamantes — Garena</div>
+          <div class="prod-price">100 MT <span>/ codigo resgate</span></div>
+          <div class="prod-footer">
+            <span class="prod-region">Global</span>
+            <button class="btn-add" onclick="openModal('Free Fire 100 Diamantes', 100, 'ff')">Comprar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-cat="ff">
+        <div class="prod-img prod-img-ff">
+          <div class="label">310<br>Diamantes</div>
+          <div class="prod-badge">Mais Vendido</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-tag">Free Fire</div>
+          <div class="prod-name">310 Diamantes — Garena</div>
+          <div class="prod-price">275 MT <span>/ codigo resgate</span></div>
+          <div class="prod-footer">
+            <span class="prod-region">Global</span>
+            <button class="btn-add" onclick="openModal('Free Fire 310 Diamantes', 275, 'ff')">Comprar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-cat="ff">
+        <div class="prod-img prod-img-ff">
+          <div class="label">520<br>Diamantes</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-tag">Free Fire</div>
+          <div class="prod-name">520 Diamantes — Garena</div>
+          <div class="prod-price">425 MT <span>/ codigo resgate</span></div>
+          <div class="prod-footer">
+            <span class="prod-region">Global</span>
+            <button class="btn-add" onclick="openModal('Free Fire 520 Diamantes', 425, 'ff')">Comprar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-cat="ff">
+        <div class="prod-img prod-img-ff">
+          <div class="label">1060<br>Diamantes</div>
+          <div class="prod-badge">Popular</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-tag">Free Fire</div>
+          <div class="prod-name">1060 Diamantes — Garena</div>
+          <div class="prod-price">825 MT <span>/ codigo resgate</span></div>
+          <div class="prod-footer">
+            <span class="prod-region">Global</span>
+            <button class="btn-add" onclick="openModal('Free Fire 1060 Diamantes', 825, 'ff')">Comprar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- GIFT CARDS -->
+      <div class="prod-card" data-cat="gc">
+        <div class="prod-img prod-img-gc">
+          <div class="label">Google<br>Play BR</div>
+          <div class="prod-badge">Gift Card</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-tag">Gift Card</div>
+          <div class="prod-name">Google Play R$10 — Brasil</div>
+          <div class="prod-price">215 MT <span>/ R$10 BRL</span></div>
+          <div class="prod-footer">
+            <span class="prod-region">Brasil</span>
+            <button class="btn-add" onclick="openModal('Google Play R$10 Brasil', 215, 'gc')">Comprar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-cat="gc">
+        <div class="prod-img prod-img-gc">
+          <div class="label">PSN<br>R$100</div>
+          <div class="prod-badge">Gift Card</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-tag">Gift Card</div>
+          <div class="prod-name">PlayStation R$100 — Brasil</div>
+          <div class="prod-price">1.499 MT <span>/ R$100 BRL</span></div>
+          <div class="prod-footer">
+            <span class="prod-region">Brasil</span>
+            <button class="btn-add" onclick="openModal('PlayStation R$100 Brasil', 1499, 'gc')">Comprar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-cat="gc">
+        <div class="prod-img prod-img-gc">
+          <div class="label">Apple<br>$10 USA</div>
+          <div class="prod-badge">Gift Card</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-tag">Gift Card</div>
+          <div class="prod-name">Apple iTunes $10 — USA</div>
+          <div class="prod-price">950 MT <span>/ $10 USD</span></div>
+          <div class="prod-footer">
+            <span class="prod-region">USA</span>
+            <button class="btn-add" onclick="openModal('Apple iTunes $10 USA', 950, 'gc')">Comprar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-cat="gc">
+        <div class="prod-img prod-img-gc">
+          <div class="label">Xbox<br>R$50</div>
+          <div class="prod-badge">Gift Card</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-tag">Gift Card</div>
+          <div class="prod-name">Xbox Gift Card R$50 — Brasil</div>
+          <div class="prod-price">975 MT <span>/ R$50 BRL</span></div>
+          <div class="prod-footer">
+            <span class="prod-region">Brasil</span>
+            <button class="btn-add" onclick="openModal('Xbox R$50 Brasil', 975, 'gc')">Comprar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STREAMING -->
+      <div class="prod-card" data-cat="st">
+        <div class="prod-img prod-img-st">
+          <div class="label">Netflix<br>1 Mes</div>
+          <div class="prod-badge">Streaming</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-tag">Streaming</div>
+          <div class="prod-name">Netflix Premium — 1 Mes</div>
+          <div class="prod-price">900 MT <span>/ mes</span></div>
+          <div class="prod-footer">
+            <span class="prod-region">Global</span>
+            <button class="btn-add" onclick="openModal('Netflix Premium 1 Mes', 900, 'st')">Comprar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-cat="st">
+        <div class="prod-img prod-img-st">
+          <div class="label">Spotify<br>Premium</div>
+          <div class="prod-badge">Streaming</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-tag">Streaming</div>
+          <div class="prod-name">Spotify Premium — 1 Mes</div>
+          <div class="prod-price">450 MT <span>/ mes</span></div>
+          <div class="prod-footer">
+            <span class="prod-region">Global</span>
+            <button class="btn-add" onclick="openModal('Spotify Premium 1 Mes', 450, 'st')">Comprar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- JOGOS -->
+      <div class="prod-card" data-cat="ga">
+        <div class="prod-img prod-img-ga">
+          <div class="label">Steam<br>R$20</div>
+          <div class="prod-badge">Jogos</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-tag">Jogos</div>
+          <div class="prod-name">Steam Gift Card R$20 — Brasil</div>
+          <div class="prod-price">425 MT <span>/ R$20 BRL</span></div>
+          <div class="prod-footer">
+            <span class="prod-region">Brasil</span>
+            <button class="btn-add" onclick="openModal('Steam R$20 Brasil', 425, 'ga')">Comprar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-cat="ga">
+        <div class="prod-img prod-img-ga">
+          <div class="label">PUBG<br>600 UC</div>
+          <div class="prod-badge">Jogos</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-tag">Jogos</div>
+          <div class="prod-name">PUBG Mobile — 600 UC</div>
+          <div class="prod-price">560 MT <span>/ 600 UC</span></div>
+          <div class="prod-footer">
+            <span class="prod-region">Global</span>
+            <button class="btn-add" onclick="openModal('PUBG 600 UC', 560, 'ga')">Comprar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- INTERNACIONAL -->
+      <div class="prod-card" data-cat="in">
+        <div class="prod-img prod-img-in">
+          <div class="label">PayPal<br>$10</div>
+          <div class="prod-badge">Internacional</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-tag">Internacional</div>
+          <div class="prod-name">Adicao Saldo PayPal — $10 USD</div>
+          <div class="prod-price">900 MT <span>/ $10 USD</span></div>
+          <div class="prod-footer">
+            <span class="prod-region">Internacional</span>
+            <button class="btn-add" onclick="openModal('Adicao PayPal $10', 900, 'in')">Comprar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-cat="in">
+        <div class="prod-img prod-img-in">
+          <div class="label">Amazon<br>$25 USA</div>
+          <div class="prod-badge">Internacional</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-tag">Internacional</div>
+          <div class="prod-name">Amazon Gift Card $25 — USA</div>
+          <div class="prod-price">2.100 MT <span>/ $25 USD</span></div>
+          <div class="prod-footer">
+            <span class="prod-region">USA</span>
+            <button class="btn-add" onclick="openModal('Amazon $25 USA', 2100, 'in')">Comprar</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /prod-grid -->
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FREE FIRE — SECAO ESPECIAL
+══════════════════════════════════════════════ -->
+<section class="ff-section" id="freefire">
+  <div class="container">
+    <div class="ff-inner">
+      <div>
+        <div class="section-label" style="color:var(--blue-light)">Recarga de jogos</div>
+        <div class="ff-title">Free Fire<br><em>Diamantes Garena</em></div>
+        <p class="ff-desc">Recarregue diamantes Free Fire via codigo de resgate diretamente no site oficial da Garena. Seguro, rapido e sem complicacoes.</p>
+        <div class="ff-steps">
+          <div class="ff-step">
+            <div class="step-num">1</div>
+            <div class="step-text">
+              <strong>Escolha o pacote de diamantes</strong>
+              <p>Selecione a quantidade que deseja e pague em MT</p>
+            </div>
+          </div>
+          <div class="ff-step">
+            <div class="step-num">2</div>
+            <div class="step-text">
+              <strong>Receba o codigo de resgate</strong>
+              <p>Codigo enviado por email ou WhatsApp imediatamente</p>
+            </div>
+          </div>
+          <div class="ff-step">
+            <div class="step-num">3</div>
+            <div class="step-text">
+              <strong>Resgata em shop.garena.sg</strong>
+              <p>Acede ao site da Garena e insere o teu codigo</p>
+            </div>
+          </div>
+        </div>
+        <a href="https://shop.garena.sg/" class="ff-link" target="_blank" rel="noopener">Visitar shop.garena.sg para resgatar</a>
+      </div>
+      <div>
+        <div class="ff-plans">
+          <div class="ff-plan" onclick="openModal('Free Fire 100 Diamantes', 100, 'ff')">
+            <div class="gems">100 Diamantes</div>
+            <div class="ff-price">80 – 120 MT</div>
+            <div class="bonus">Entrega imediata</div>
+          </div>
+          <div class="ff-plan featured" onclick="openModal('Free Fire 310 Diamantes', 275, 'ff')">
+            <div class="gems">310 Diamantes</div>
+            <div class="ff-price">200 – 350 MT</div>
+            <div class="bonus">Mais vendido</div>
+          </div>
+          <div class="ff-plan" onclick="openModal('Free Fire 520 Diamantes', 425, 'ff')">
+            <div class="gems">520 Diamantes</div>
+            <div class="ff-price">350 – 500 MT</div>
+            <div class="bonus">Entrega imediata</div>
+          </div>
+          <div class="ff-plan" onclick="openModal('Free Fire 1060 Diamantes', 825, 'ff')">
+            <div class="gems">1060 Diamantes</div>
+            <div class="ff-price">700 – 950 MT</div>
+            <div class="bonus">Melhor valor</div>
+          </div>
+          <div class="ff-plan" onclick="openModal('Free Fire 2180 Diamantes', 1600, 'ff')">
+            <div class="gems">2180 Diamantes</div>
+            <div class="ff-price">1.300 – 1.900 MT</div>
+            <div class="bonus">Entrega imediata</div>
+          </div>
+          <div class="ff-plan" onclick="openModal('Free Fire 5600 Diamantes', 4250, 'ff')">
+            <div class="gems">5600 Diamantes</div>
+            <div class="ff-price">3.500 – 5.000 MT</div>
+            <div class="bonus">Pacote Pro</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     STREAMING
+══════════════════════════════════════════════ -->
+<section id="streaming">
+  <div class="container">
+    <div class="section-label">Entretenimento digital</div>
+    <div class="section-title">Streaming</div>
+    <p class="section-sub">Acesse as melhores plataformas de entretenimento. Pague em MT, ative em minutos.</p>
+    <div class="stream-grid">
+
+      <div class="stream-card">
+        <div class="stream-logo" style="background:#e50914">N</div>
+        <div class="stream-name">Netflix</div>
+        <div class="stream-desc">Filmes, series e documentarios ilimitados</div>
+        <div class="stream-plans">
+          <div class="stream-plan"><span>Basico</span>    <span>300 MT/mes</span></div>
+          <div class="stream-plan"><span>Standard</span>  <span>600 MT/mes</span></div>
+          <div class="stream-plan"><span>Premium</span>   <span>800 MT/mes</span></div>
+        </div>
+        <button class="btn-primary" style="width:100%;justify-content:center" onclick="openModal('Netflix Premium', 900, 'st')">Assinar Netflix</button>
+      </div>
+
+      <div class="stream-card">
+        <div class="stream-logo" style="background:#1db954">SP</div>
+        <div class="stream-name">Spotify</div>
+        <div class="stream-desc">Musica, podcasts e audiobooks sem limites</div>
+        <div class="stream-plans">
+          <div class="stream-plan"><span>Individual</span><span>250 MT/mes</span></div>
+          <div class="stream-plan"><span>Duo</span>       <span>450 MT/mes</span></div>
+          <div class="stream-plan"><span>Familia</span>   <span>600 MT/mes</span></div>
+        </div>
+        <button class="btn-primary" style="width:100%;justify-content:center" onclick="openModal('Spotify Premium', 450, 'st')">Assinar Spotify</button>
+      </div>
+
+      <div class="stream-card">
+        <div class="stream-logo" style="background:#113ccf">D+</div>
+        <div class="stream-name">Disney+</div>
+        <div class="stream-desc">Disney, Marvel, Star Wars e muito mais</div>
+        <div class="stream-plans">
+          <div class="stream-plan"><span>Standard</span>  <span>500 MT/mes</span></div>
+          <div class="stream-plan"><span>Premium</span>   <span>700 MT/mes</span></div>
+          <div class="stream-plan"><span>Anual</span>     <span>8.000 MT/ano</span></div>
+        </div>
+        <button class="btn-primary" style="width:100%;justify-content:center" onclick="openModal('Disney+ Premium', 800, 'st')">Assinar Disney+</button>
+      </div>
+
+      <div class="stream-card">
+        <div class="stream-logo" style="background:#ff0000">YT</div>
+        <div class="stream-name">YouTube Premium</div>
+        <div class="stream-desc">Sem anuncios, videos offline e YouTube Music</div>
+        <div class="stream-plans">
+          <div class="stream-plan"><span>Individual</span><span>300 MT/mes</span></div>
+          <div class="stream-plan"><span>Familia</span>   <span>500 MT/mes</span></div>
+        </div>
+        <button class="btn-primary" style="width:100%;justify-content:center" onclick="openModal('YouTube Premium', 400, 'st')">Assinar YouTube</button>
+      </div>
+
+      <div class="stream-card">
+        <div class="stream-logo" style="background:#00a8e0">HBO</div>
+        <div class="stream-name">HBO Max</div>
+        <div class="stream-desc">Series exclusivas, filmes e conteudo HBO</div>
+        <div class="stream-plans">
+          <div class="stream-plan"><span>Basic</span>    <span>550 MT/mes</span></div>
+          <div class="stream-plan"><span>Ultimate</span> <span>850 MT/mes</span></div>
+        </div>
+        <button class="btn-primary" style="width:100%;justify-content:center" onclick="openModal('HBO Max Ultimate', 950, 'st')">Assinar HBO Max</button>
+      </div>
+
+      <div class="stream-card">
+        <div class="stream-logo" style="background:#1560bd">PR</div>
+        <div class="stream-name">Amazon Prime</div>
+        <div class="stream-desc">Prime Video, entrega rapida e muito mais</div>
+        <div class="stream-plans">
+          <div class="stream-plan"><span>Mensal</span><span>500 MT/mes</span></div>
+          <div class="stream-plan"><span>Anual</span> <span>5.000 MT/ano</span></div>
+        </div>
+        <button class="btn-primary" style="width:100%;justify-content:center" onclick="openModal('Amazon Prime', 500, 'st')">Assinar Prime</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     GIFT CARDS — REGIOES
+══════════════════════════════════════════════ -->
+<section class="cats" id="giftcards">
+  <div class="container">
+    <div class="section-label">Gift Cards por regiao</div>
+    <div class="section-title">Escolha a Sua Regiao</div>
+    <p class="section-sub">Gift cards disponiveis para mais de 30 regioes. Atencao: use o gift card na regiao correta da sua conta.</p>
+    <div class="region-grid">
+      <div class="region-card" onclick="openModal('Gift Card USA', 950, 'gc')">
+        <div class="region-flag">&#127482;&#127480;</div>
+        <div class="region-name">Estados Unidos</div>
+        <div class="region-from">A partir de 950 MT</div>
+      </div>
+      <div class="region-card" onclick="openModal('Gift Card Brasil', 215, 'gc')">
+        <div class="region-flag">&#127463;&#127479;</div>
+        <div class="region-name">Brasil</div>
+        <div class="region-from">A partir de 215 MT</div>
+      </div>
+      <div class="region-card" onclick="openModal('Gift Card Portugal', 850, 'gc')">
+        <div class="region-flag">&#127477;&#127481;</div>
+        <div class="region-name">Portugal</div>
+        <div class="region-from">A partir de 850 MT</div>
+      </div>
+      <div class="region-card" onclick="openModal('Gift Card Reino Unido', 1100, 'gc')">
+        <div class="region-flag">&#127468;&#127463;</div>
+        <div class="region-name">Reino Unido</div>
+        <div class="region-from">A partir de 1.100 MT</div>
+      </div>
+      <div class="region-card" onclick="openModal('Gift Card Africa do Sul', 600, 'gc')">
+        <div class="region-flag">&#127487;&#127462;</div>
+        <div class="region-name">Africa do Sul</div>
+        <div class="region-from">A partir de 600 MT</div>
+      </div>
+      <div class="region-card" onclick="openModal('Gift Card Canada', 900, 'gc')">
+        <div class="region-flag">&#127464;&#127462;</div>
+        <div class="region-name">Canada</div>
+        <div class="region-from">A partir de 900 MT</div>
+      </div>
+      <div class="region-card" onclick="openModal('Gift Card Australia', 1000, 'gc')">
+        <div class="region-flag">&#127462;&#127482;</div>
+        <div class="region-name">Australia</div>
+        <div class="region-from">A partir de 1.000 MT</div>
+      </div>
+      <div class="region-card" onclick="openModal('Gift Card Alemanha', 950, 'gc')">
+        <div class="region-flag">&#127465;&#127466;</div>
+        <div class="region-name">Alemanha</div>
+        <div class="region-from">A partir de 950 MT</div>
+      </div>
+      <div class="region-card" onclick="openModal('Gift Card Dubai UAE', 1200, 'gc')">
+        <div class="region-flag">&#127462;&#127466;</div>
+        <div class="region-name">Dubai / UAE</div>
+        <div class="region-from">A partir de 1.200 MT</div>
+      </div>
+      <div class="region-card" onclick="openModal('Gift Card Franca', 920, 'gc')">
+        <div class="region-flag">&#127467;&#127479;</div>
+        <div class="region-name">Franca</div>
+        <div class="region-from">A partir de 920 MT</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     INTERNACIONAL — TABELA DE PRECOS COMPLETA
+══════════════════════════════════════════════ -->
+<section id="internacional">
+  <div class="container">
+    <div class="section-label">Tabela de precos atualizada</div>
+    <div class="section-title">Produtos Internacionais</div>
+    <p class="section-sub">Precos em MT. Valores variam conforme taxa de cambio e disponibilidade. Contacte-nos para precos em tempo real.</p>
+
+    <!-- Gift Cards Table -->
+    <div class="price-table-wrap">
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Regiao</th>
+            <th>Valor Original</th>
+            <th>Preco MT</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="tag-gc">GIFT CARD</span>&nbsp; Google Play</td>
+            <td>Brasil</td>
+            <td>R$10</td>
+            <td>250 MT</td>
+          </tr>
+          <tr>
+            <td><span class="tag-gc">GIFT CARD</span>&nbsp; Google Play</td>
+            <td>Brasil</td>
+            <td>R$50</td>
+            <td>950 MT</td>
+          </tr>
+          <tr>
+            <td><span class="tag-gc">GIFT CARD</span>&nbsp; Google Play</td>
+            <td>Africa do Sul</td>
+            <td>R100 ZAR</td>
+            <td>700 MT</td>
+          </tr>
+          <tr>
+            <td><span class="tag-gc">GIFT CARD</span>&nbsp; PlayStation</td>
+            <td>Brasil</td>
+            <td>R$35</td>
+            <td>550 MT</td>
+          </tr>
+          <tr>
+            <td><span class="tag-gc">GIFT CARD</span>&nbsp; PlayStation</td>
+            <td>Brasil</td>
+            <td>R$60</td>
+            <td>950 MT</td>
+          </tr>
+          <tr>
+            <td><span class="tag-gc">GIFT CARD</span>&nbsp; PlayStation</td>
+            <td>Brasil</td>
+            <td>R$100</td>
+            <td>1.499 MT</td>
+          </tr>
+          <tr>
+            <td><span class="tag-gc">GIFT CARD</span>&nbsp; PlayStation</td>
+            <td>Brasil</td>
+            <td>R$250</td>
+            <td>3.650 MT</td>
+          </tr>
+          <tr>
+            <td><span class="tag-gc">GIFT CARD</span>&nbsp; Steam</td>
+            <td>Brasil</td>
+            <td>R$20</td>
+            <td>500 MT</td>
+          </tr>
+          <tr>
+            <td><span class="tag-gc">GIFT CARD</span>&nbsp; Apple / iTunes</td>
+            <td>EUA</td>
+            <td>$10 USD</td>
+            <td>1.100 MT</td>
+          </tr>
+          <tr>
+            <td><span class="tag-gc">GIFT CARD</span>&nbsp; Xbox</td>
+            <td>Brasil</td>
+            <td>R$50</td>
+            <td>1.100 MT</td>
+          </tr>
+          <tr>
+            <td><span class="tag-gc">GIFT CARD</span>&nbsp; Netflix</td>
+            <td>Brasil</td>
+            <td>R$30</td>
+            <td>700 MT</td>
+          </tr>
+          <!-- Free Fire -->
+          <tr>
+            <td><span class="tag-ff">FREE FIRE</span>&nbsp; 100 Diamantes</td>
+            <td>Global</td>
+            <td>—</td>
+            <td>80 MT</td>
+          </tr>
+          <tr>
+            <td><span class="tag-ff">FREE FIRE</span>&nbsp; 310 Diamantes</td>
+            <td>Global</td>
+            <td>—</td>
+            <td>200 MT</td>
+          </tr>
+          <tr>
+            <td><span class="tag-ff">FREE FIRE</span>&nbsp; 520 Diamantes</td>
+            <td>Global</td>
+            <td>—</td>
+            <td>350 MT</td>
+          </tr>
+          <tr>
+            <td><span class="tag-ff">FREE FIRE</span>&nbsp; 1060 Diamantes</td>
+            <td>Global</td>
+            <td>—</td>
+            <td>700 MT</td>
+          </tr>
+          <tr>
+            <td><span class="tag-ff">FREE FIRE</span>&nbsp; 2180 Diamantes</td>
+            <td>Global</td>
+            <td>—</td>
+            <td>1.300 MT</td>
+          </tr>
+          <tr>
+            <td><span class="tag-ff">FREE FIRE</span>&nbsp; 5600 Diamantes</td>
+            <td>Global</td>
+            <td>—</td>
+            <td>3.500 MT</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="table-note">Os precos variam conforme o dolar, taxa de cambio e disponibilidade. Contacte-nos para confirmacao do preco antes de comprar.</p>
+    </div>
+
+    <!-- Banner adicionar internacional -->
+    <div class="intl-banner" style="margin-top:48px">
+      <div>
+        <h2>Adicionar Saldo <em>Internacional</em></h2>
+        <p>Adicionamos saldo em contas internacionais: PayPal, Google Pay, Apple Pay, Amazon, Skrill e muito mais. Facil, seguro e rapido.</p>
+        <br>
+        <button class="btn-primary" onclick="openModal('Adicao Internacional', 900, 'in')">Solicitar Adicao Internacional</button>
+      </div>
+      <div>
+        <div class="intl-mini-grid">
+          <div class="intl-mini"><strong>PayPal</strong><span>A partir de 900 MT / $10</span></div>
+          <div class="intl-mini"><strong>Skrill</strong> <span>A partir de 950 MT / $10</span></div>
+          <div class="intl-mini"><strong>Amazon</strong><span>A partir de 2.100 MT / $25</span></div>
+          <div class="intl-mini"><strong>Apple Pay</strong><span>A partir de 860 MT / $10</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FORMAS DE PAGAMENTO
+══════════════════════════════════════════════ -->
+<section class="pay-section" id="pagamento">
+  <div class="container">
+    <div class="section-label">Formas de pagamento</div>
+    <div class="section-title">Como Pagar</div>
+    <p class="section-sub">Aceitamos multiplos metodos de pagamento. Pagamento automatico — receba o codigo logo apos confirmar.</p>
+    <div class="pay-grid">
+      <div class="pay-card">
+        <div class="pay-logo" style="background:#003087">PP</div>
+        <div class="pay-name">PayPal</div>
+        <div class="pay-desc">Pague com sua conta PayPal. Aceito globalmente, seguro e rapido.</div>
+        <span class="pay-badge">Disponivel</span>
+      </div>
+      <div class="pay-card">
+        <div class="pay-logo" style="background:#635bff">ST</div>
+        <div class="pay-name">Stripe</div>
+        <div class="pay-desc">Cartao de credito e debito. Visa, Mastercard, American Express.</div>
+        <span class="pay-badge">Disponivel</span>
+      </div>
+      <div class="pay-card">
+        <div class="pay-logo" style="background:#e51c30">M</div>
+        <div class="pay-name">M-Pesa</div>
+        <div class="pay-desc">Pague com M-Pesa diretamente do telemovel. Simples e acessivel em Mocambique.</div>
+        <span class="pay-badge active">Em Breve</span>
+      </div>
+    </div>
+    <div class="security-note">
+      <span class="icon-sec">&#128274;</span>
+      <div>
+        <strong>Pagamento Seguro</strong>
+        <p>Todas as transacoes sao criptografadas. Stripe e PayPal processam os pagamentos com certificacao PCI DSS. Receba o seu produto logo apos o pagamento confirmado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     COMO FUNCIONA
+══════════════════════════════════════════════ -->
+<section id="como">
+  <div class="container">
+    <div class="section-label">Processo simples</div>
+    <div class="section-title">Como Funciona</div>
+    <p class="section-sub">Em 4 passos simples, voce recebe o seu produto digital.</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num-lg">01</div>
+        <h3>Escolha o produto</h3>
+        <p>Navegue pelo catalogo e selecione o produto que deseja — Free Fire, Gift Card, Streaming ou Internacional.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num-lg">02</div>
+        <h3>Selecione o plano</h3>
+        <p>Escolha a quantidade, regiao ou plano que melhor se adapta as suas necessidades e orcamento em MT.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num-lg">03</div>
+        <h3>Pague em MT</h3>
+        <p>Pague com M-Pesa, PayPal ou cartao via Stripe. Pagamento automatico, facil e seguro.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num-lg">04</div>
+        <h3>Receba na hora</h3>
+        <p>O codigo ou acesso e enviado por email imediatamente apos a confirmacao do pagamento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo">Ten<span>Digital</span> MZ</a>
+      <p>A plataforma de produtos digitais de Mocambique. Gift cards, Free Fire, streaming e mais — tudo em MT, entregue na hora.</p>
+    </div>
+    <div>
+      <h4>Produtos</h4>
+      <ul>
+        <li><a href="#freefire">Free Fire Diamantes</a></li>
+        <li><a href="#giftcards">Gift Cards</a></li>
+        <li><a href="#streaming">Streaming</a></li>
+        <li><a href="#internacional">Internacional</a></li>
+        <li><a href="#produtos">Ver todos</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Suporte</h4>
+      <ul>
+        <li><a href="#como">Como Funciona</a></li>
+        <li><a href="#pagamento">Formas de Pagamento</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Contacto</a></li>
+        <li><a href="#">WhatsApp</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Termos de Servico</a></li>
+        <li><a href="#">Politica de Privacidade</a></li>
+        <li><a href="#">Reembolsos</a></li>
+        <li><a href="#">Sobre nos</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>2025 Ten Digital MZ. Todos os direitos reservados.</span>
+    <span>Maputo, Mocambique</span>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════
+     MODAL DE COMPRA
+══════════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">&#10005;</button>
+
+    <h2 id="modal-title">Comprar Produto</h2>
+    <p class="sub" id="modal-sub">Preencha os dados abaixo para finalizar a compra</p>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label>Email (para receber o codigo)</label>
+      <input type="email" id="modal-email" placeholder="seu@email.com">
+    </div>
+
+    <!-- UID Free Fire / Internacional -->
+    <div class="form-group" id="uid-group" style="display:none">
+      <label id="uid-label">ID do Jogador</label>
+      <input type="text" id="modal-uid" placeholder="Ex: 123456789">
+    </div>
+
+    <!-- Preco -->
+    <div class="modal-price">
+      <span>Total a pagar</span>
+      <strong id="modal-price">0 <small>MT</small></strong>
+    </div>
+
+    <!-- Metodo de pagamento -->
+    <label style="font-size:13px;font-weight:500;color:var(--navy);display:block;margin-bottom:10px">Metodo de Pagamento</label>
+    <div class="pay-methods">
+      <div class="pay-method" data-method="mpesa"  onclick="selectPayMethod('mpesa')">
+        <span class="icon">M</span>M-Pesa
+      </div>
+      <div class="pay-method" data-method="paypal" onclick="selectPayMethod('paypal')">
+        <span class="icon">PP</span>PayPal
+      </div>
+      <div class="pay-method" data-method="stripe" onclick="selectPayMethod('stripe')">
+        <span class="icon">ST</span>Stripe
+      </div>
+    </div>
+
+    <!-- M-Pesa info -->
+    <div id="mpesa-info" style="background:var(--off-white);border-radius:8px;padding:14px;font-size:13px;color:var(--text-muted);margin-bottom:14px">
+      Apos clicar em "Finalizar", envie o pagamento M-Pesa para o numero que sera exibido. O codigo e entregue apos confirmacao.
+    </div>
+
+    <!-- Stripe card element -->
+    <div id="stripe-form" class="hidden" style="margin-bottom:14px">
+      <div id="card-element"></div>
+      <div id="card-errors" role="alert"></div>
+    </div>
+
+    <!-- PayPal button -->
+    <div id="paypal-button-container" class="hidden"></div>
+
+    <!-- Botao principal (escondido quando PayPal ativo) -->
+    <button class="btn-primary btn-pay" id="btn-pay" onclick="finalizarCompra()">
+      <span class="btn-label">Finalizar Compra</span>
+      <span class="spinner" id="pay-spinner"></span>
+    </button>
+
+    <p class="modal-secure">Transacao segura — codigo enviado imediatamente</p>
+  </div>
+</div>
+
+<!-- Toast de notificacao -->
+<div class="toast" id="toast"></div>
+
+<!-- Chat AI widget -->
+<div class="chat-widget" id="chat-widget" aria-hidden="true">
+  <div class="chat-widget-header">
+    <div>
+      <strong>Assistente AI</strong>
+      <div class="chat-widget-meta">Chat de teste + atendimento WhatsApp</div>
+    </div>
+    <button type="button" id="chat-close" aria-label="Fechar chat">×</button>
+  </div>
+  <div class="chat-widget-body">
+    <div class="chat-messages" id="chat-messages">
+      <div class="chat-message agent">Olá! Pergunte algo ou use o WhatsApp para atendimento real.</div>
+    </div>
+    <div class="chat-widget-input">
+      <input id="chat-input" type="text" placeholder="Escreva sua pergunta..." />
+      <button id="chat-send" type="button">Enviar</button>
+    </div>
+  </div>
+</div>
+
+<button class="chat-toggle" id="chat-toggle" type="button">Chat AI</button>
+<a class="whatsapp-float" href="https://wa.me/258844772002" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+ 
+ <!-- Toast de notificacao -->
+
+<!-- ═══════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════════ -->
+<script src="js/app.js"></script>
